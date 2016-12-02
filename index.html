@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Database Application</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+
+</head>
+<body ng-app="libraryApp">
+<div id="wrapper">
+
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <!--<button type="button" class="navbar-toggler hidden sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation"></button>-->
+    <div class="navbar-header container-fluid">
+    <a class="navbar-brand" href="#">Database Project</a>
+    <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Help</a></li>
+    </ul>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="sidebar">
+            <ul class="nav nav-sidebar">
+
+                <form class="form-inline"><div class="form-group">
+                <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Search.."><span class="input-group-btn"><button class="btn btn-primary" type="submit">Search</button></span></div>
+                </div></form>
+
+                <li class="active"><a href="#">Overview <span class="sr-only">(current)</span> </a></li>
+
+                <li><a href="#">Current Library</a></li>
+                <li><a href="#">Search for Book</a></li>
+                <li><a href="#">Update Entry</a></li>
+                <li><a href="#">Remove Entry</a></li>
+
+                <li><a href="#">Reports</a></li>
+                <li><a href="#">Analytics</a></li>
+                <li><a href="#">Export</a></li>
+            </ul>
+        </div>
+
+
+<!-- Start App! -->
+        <div class="col-sm-9 main" ng-controller="LibraryController">
+          <div class="container">
+            <h1>Dashboard</h1>
+            <form>
+            <div class="offset-sm-2 col-sm-8">
+            <div class="input-group">
+              <div class="form-group row">
+              <input type="text" class="form-control" ng-model="book" placeholder="Book Title">
+
+            </div>
+              <div class="form-group row">
+              <input type="text" class="form-control" ng-model="author" placeholder="Author Name">
+
+            </div>
+              <div class="form-group row">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-primary" ng-click="addEntry()">
+                  <i class="fa fa-plus fa-lg"></i>&nbsp;Add Entry
+                </button>
+              </span>
+
+            </div>
+            </div>
+          </div>
+          </form>
+        </div>
+          <br><br><br>
+
+            <!-- Editable Library -->
+            <ul class="list-group" ng-show="library.length > 0">
+              <li class="list-group-item clearfix book" ng-repeat="entry in library">
+                <p class="lead">Title: {{entry.book}}<br>Author: {{entry.author}}</p>
+                <div>
+                  <span class="pull-right">
+                  <button class="btn btn-primary btn-xs" ng-click="editEntry($index)"><i class="fa fa-pencil"></i></button>
+                  <!--<button class="btn btn-primary btn-xs" ng-show=""><i class="fa fa-check" aria-hidden="true"></i></button>
+                  <button class="btn btn-primary btn-xs"><i class="fa fa-repeat" aria-hidden="true"></i></button>-->
+                  <button class="btn btn-danger btn-xs" ng-click="deleteEntry($index)"><i class="fa fa-times"></i></button>
+                </span>
+                </div>
+              </li>
+            </ul>
+            <!-- End Library List -->
+
+
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+</div>
+    <!-- jQuery Scripts Below -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/db.js"></script>
+<!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+</html>
