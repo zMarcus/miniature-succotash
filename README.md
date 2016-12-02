@@ -7,4 +7,6 @@ I want to add storage capabilities so that -TBC-
 
 storage ideas:
   - ngStorage - https://www.youtube.com/watch?v=g4vLTauq5j8&t=198s
-  - AngularJS SQL
+    - https://lostechies.com/gabrielschenker/2013/12/17/angularjspart-5-pushing-data-to-the-server/
+  - AngularJS SQL - http://www.w3schools.com/angular/angular_sql.asp
+  - 
